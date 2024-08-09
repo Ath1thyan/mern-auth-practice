@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
 
     const [formData, setFormData] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value })
@@ -30,6 +32,7 @@ const Signup = () => {
                 setError(true);
                 return;
             }
+            navigate('/sign-in');
         }
         catch (error) {
             setError(true);
@@ -40,7 +43,7 @@ const Signup = () => {
 
     return (
         <div className='p-3 max-w-lg mx-auto'>
-            <h1 className='text-3xl text-center font-semibold my-7 text-blue-700'>Signup</h1>
+            <h1 className='text-3xl text-center font-semibold my-7 text-blue-700'>Sign Up</h1>
             <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
                 <input type='text' placeholder='Username' id='username' className='bg-slate-100 p-3 rounded-lg' onChange={handleChange} />
                 <input type='email' placeholder='Email' id='email' className='bg-slate-100 p-3 rounded-lg' onChange={handleChange} />
