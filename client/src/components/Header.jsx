@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -22,7 +21,7 @@ export default function Header() {
                     <Link to='/profile'>
                     {
                         currentUser ? (
-                            <img src={currentUser.profilePicture} alt='Profile' className='h-7 w-7 rounded-full object-cover' />
+                            <img src={currentUser.profilePicture} alt='Profile' className='h-7 w-7 rounded-full object-cover border-blue-500 border-2' />
                         ) : (
                             <li>Sign In</li>
                         )
