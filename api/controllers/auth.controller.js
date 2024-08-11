@@ -45,7 +45,10 @@ export const signin = async (req, res, next) => {
         }
         // Create and sign JWT token
         const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
+
+        // Remove password from user object before sending it back to the client
         const { password: hashedPassword, ...restItems } = validUser._doc;
+        
         // Set cookie with JWT token
         const expiryDuration = new Date(Date.now() + 3600000);
         res.cookie('access_token', token, {httpOnly: true, expires: expiryDuration}).status(200).json(restItems);
